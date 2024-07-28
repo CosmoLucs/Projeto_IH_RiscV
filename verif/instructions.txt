@@ -1,6 +1,6 @@
-lw x8,1(x0)
-addi x8,x8,2
-srai x8,x8,1
-slli x8,x8,1
-srli x8,x8,1
-slti x9,x0,-4
+lw x4,1(x0)
+lw x6,0(x0)
+lw x7,1(x0)
+addi x4,x4,-1
+addi x7,x7,2
+bge x4,x4,-8

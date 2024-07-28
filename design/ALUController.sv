@@ -26,7 +26,9 @@ module ALUController (
     // R\I - SRLI
     ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)) ||
     // R\I - SLT
-    ((ALUOp == 2'b10) && (Funct3 == 3'b010));         
+    ((ALUOp == 2'b10) && (Funct3 == 3'b010))||
+    // Branch - BLT
+    ((ALUOp == 2'b01) && (Funct3 == 100));         
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,7 +42,11 @@ module ALUController (
     // R\I - SLLI
     ((ALUOp == 2'b10) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000)) ||
     // R\I - SRLI
-    ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)); 
+    ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)) ||
+    // Branch - BNE
+    ((ALUOp == 2'b01) && (Funct3 == 001))||
+    // Branch - BLT
+    ((ALUOp == 2'b01) && (Funct3 == 100)); 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -52,15 +58,23 @@ module ALUController (
     // R\I - SLLI
     ((ALUOp == 2'b10) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000)) ||
     // R\I - SRLI
-    ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000));
+    ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)) ||
+    // Branch - BGE
+    ((ALUOp == 2'b01) && (Funct3 == 101));
     
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
   assign Operation[3] = 
     // BEQ
-    (ALUOp == 2'b01) ||
+    ((ALUOp == 2'b01) && (Funct3 == 3'b000)) ||
     // R\I - SLT/I
-    ((ALUOp == 2'b10) && (Funct3 == 3'b010));
+    ((ALUOp == 2'b10) && (Funct3 == 3'b010)) ||
+    // Branch - BNE
+    ((ALUOp == 2'b01) && (Funct3 == 001)) ||
+    // Branch - BLT
+    ((ALUOp == 2'b01) && (Funct3 == 100)) ||
+    // Branch - BGE
+    ((ALUOp == 2'b01) && (Funct3 == 101));
 
     /*Nosso código termina aqui */
 endmodule

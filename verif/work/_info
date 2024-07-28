@@ -11,7 +11,7 @@ cModel Technology
 Z0 dC:/Users/clebe/Desktop/Lucas/Faculdade/Programacao/P3_EC/Infra-Hardware/Projeto_IH_Verilog/Projeto_IH_RiscV/verif
 vadder
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1722135920
+Z2 !s110 1722209891
 !i10b 1
 !s100 J@Bf42a<9Q9R;nJSZl2>B2
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -28,7 +28,7 @@ Z7 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z8 !s108 1722135919.000000
+Z8 !s108 1722209891.000000
 !s107 ./tb_top.sv|./../design/RISC_V.sv|./../design/Datapath.sv|./../design/instructionmemory.sv|./../design/datamemory.sv|./../design/mux4.sv|./../design/mux2.sv|./../design/imm_Gen.sv|./../design/HazardDetection.sv|./../design/ForwardingUnit.sv|./../design/flopr.sv|./../design/Controller.sv|./../design/BranchUnit.sv|./../design/ALUController.sv|./../design/alu.sv|./../design/RegFile.sv|./../design/RegPack.sv|./../design/Memoria32Data.sv|./../design/Memoria32.sv|./../design/ramOnChipData.v|./../design/ramOnChip32.v|./../design/adder.sv|
 Z9 !s90 -reportprogress|300|-f|compile_verilog|
 !i113 1
@@ -37,17 +37,17 @@ valu
 R1
 R2
 !i10b 1
-!s100 NNgm?[[C:e@Io_kL7Bf3_1
+!s100 C_PKMfojabC<Id9ILlSn^3
 R3
-I6_[IOmldH1_n39P:PUaG13
+Ie83gOhS@chC[P`F4=e?<Y2
 R4
 S1
 R0
-w1722135485
+w1722209283
 8./../design/alu.sv
 F./../design/alu.sv
 !i122 0
-L0 3 40
+L0 3 46
 R7
 r1
 !s85 0
@@ -61,17 +61,17 @@ vALUController
 R1
 R2
 !i10b 1
-!s100 Bm4>>bk=TTZ;>J852m[;?0
+!s100 lHZCk`lgaXE^Dj^ZzF6>o2
 R3
-IY`1UETiSN8jmcQPL<g3T[2
+IOlZ82GAGOSeN]9Ebd9b^I2
 R4
 S1
 R0
-w1722135605
+w1722208381
 8./../design/ALUController.sv
 F./../design/ALUController.sv
 !i122 0
-L0 3 64
+L0 3 78
 R7
 r1
 !s85 0
