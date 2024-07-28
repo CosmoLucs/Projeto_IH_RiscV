@@ -22,10 +22,13 @@ module Controller (
   logic [6:0] R_TYPE, I_TYPE, LW, SW, BR;
 
   assign R_TYPE = 7'b0110011;  //add,and
-  assign I_TYPE = 7'b0010011;  //addi
   assign LW = 7'b0000011;  //lw
   assign SW = 7'b0100011;  //sw
   assign BR = 7'b1100011;  //beq
+  
+  /* Nosso código começa aqui */
+
+  assign I_TYPE = 7'b0010011;  //addi
 
   assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == I_TYPE);
   assign MemtoReg = (Opcode == LW);
@@ -35,4 +38,6 @@ module Controller (
   assign ALUOp[0] = (Opcode == BR);
   assign ALUOp[1] = (Opcode == R_TYPE || Opcode == I_TYPE);
   assign Branch = (Opcode == BR);
+
+  /* Nosso código termina aqui */
 endmodule

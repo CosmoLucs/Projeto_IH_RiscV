@@ -1,5 +1,6 @@
-lw x5,1(x0)
-add x7,x0,x5
-addi x8,x7,8
-sub x28,x7,x5
-or x29,x7,x5
+lw x8,1(x0)
+addi x8,x8,2
+srai x8,x8,1
+slli x8,x8,1
+srli x8,x8,1
+slti x9,x0,-4

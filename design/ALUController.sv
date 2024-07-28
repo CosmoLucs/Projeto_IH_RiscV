@@ -14,11 +14,19 @@ module ALUController (
     output logic [3:0] Operation  // operation selection for ALU
 );
 
+  /* Nosso código começa aqui */
+
   assign Operation[0] =
     // R\I - OR 
     ((ALUOp == 2'b10) && (Funct3 == 3'b110) && (Funct7 == 7'b0000000)) ||     
     // R\I - SUB
-    ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000));            
+    ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000)) ||
+    // R/I - SRAI
+    ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||
+    // R\I - SRLI
+    ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)) ||
+    // R\I - SLT
+    ((ALUOp == 2'b10) && (Funct3 == 3'b010));         
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -28,19 +36,31 @@ module ALUController (
     // R\I - ADD
     ((ALUOp == 2'b10) && (Funct3 == 3'b000))||  
     // R\I - SUB
-    ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000)); 
+    ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000)) ||
+    // R\I - SLLI
+    ((ALUOp == 2'b10) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000)) ||
+    // R\I - SRLI
+    ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)); 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
   assign Operation[2] =  
     // R\I - Xor
-    ((ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000));
+    ((ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000)) ||
+    // R/I - SRAI
+    ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||
+    // R\I - SLLI
+    ((ALUOp == 2'b10) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000)) ||
+    // R\I - SRLI
+    ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000));
     
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
   assign Operation[3] = 
     // BEQ
-    (ALUOp == 2'b01) || 
-    // R\I- srli 
-    ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000));
+    (ALUOp == 2'b01) ||
+    // R\I - SLT/I
+    ((ALUOp == 2'b10) && (Funct3 == 3'b010));
+
+    /*Nosso código termina aqui */
 endmodule
