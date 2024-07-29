@@ -29,29 +29,50 @@ module datamemory #(
   );
 
   always_ff @(*) begin
-    raddress = {{22{1'b0}}, a};
-    waddress = {{22{1'b0}}, {a[8:2], {2{1'b0}}}};
     Datain = wd;
     Wr = 4'b0000;
 
+    //============================== LOAD ======================================
     if (MemRead) begin
       case (Funct3)
-        3'b010:  //LW
-        rd <= Dataout;
-        default: rd <= Dataout;
+        3'b000: begin  //LB
+          rd[31:0] <= {{24{Dataout[31]}}, Dataout[7:0]};
+          raddress <= {{23{a[8]}}, a};
+        end
+        3'b001: begin  //LH
+          rd[31:0] <= {{16{Dataout[31]}}, Dataout[15:0]};
+          raddress <= {{23{a[8]}}, {a[8:1], {1{1'b0}}}};
+        end
+        3'b100: begin  //LBU
+          rd[31:0] <= {{24{1'b0}}, Dataout[7:0]};
+          raddress <= {{23{a[8]}}, a};
+        end
+        default: begin // por default, trata como LW
+          rd[31:0] <= Dataout[31:0];
+          raddress <= {{23{a[8]}}, {a[8:2], {2{1'b0}}}};
+        end
       endcase
+    //============================== READ ======================================
     end else if (MemWrite) begin
       case (Funct3)
-        3'b010: begin  //SW
-          Wr <= 4'b1111;
-          Datain <= wd;
+        3'b000: begin  //SB
+          Wr <= 4'b0001;         //???? o que é isso? o Wr?
+          Datain[31:0] <= {{24{wd[31]}}, wd[7:0]};
+          waddress <= {{23{a[8]}}, a};
         end
-        default: begin
+        3'b001: begin  //SH
+          Wr <= 4'b0011;
+          Datain[31:0] <= {{16{wd[31]}}, wd[15:0]};
+          waddress <= {{23{a[8]}}, {a[8:1], {1{1'b0}}}};
+        end
+        default: begin // por default, trata como SW
           Wr <= 4'b1111;
-          Datain <= wd;
+          Datain[31:0] <= wd[31:0];
+          waddress <= {{23{a[8]}}, {a[8:2], {2{1'b0}}}};
         end
       endcase
     end
+    //==========================================================================
   end
 
 endmodule
