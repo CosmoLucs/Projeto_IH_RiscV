@@ -50,6 +50,7 @@ module datamemory #(
         default: begin // por default, trata como LW
           rd[31:0] <= Dataout[31:0];
           raddress <= {{23{a[8]}}, {a[8:2], {2{1'b0}}}};
+          
         end
       endcase
     //============================== READ ======================================
