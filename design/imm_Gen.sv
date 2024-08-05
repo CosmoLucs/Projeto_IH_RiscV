@@ -10,8 +10,6 @@ module imm_Gen (
     case (inst_code[6:0])
       7'b0000011:  /*I-type load part*/
       Imm_out = {inst_code[31] ? 20'hFFFFF : 20'b0, inst_code[31:20]};
-      7'b0100011:  /*I-type store part*/
-      Imm_out = {{20{inst_code[31]}}, {inst_code[31:25], inst_code[11:7]}};
 
       7'b0010011: /* I-type - lida com constantes*/
       Imm_out = {inst_code[31] ? 20'hFFFFF : 20'b0, inst_code[31:20]};
