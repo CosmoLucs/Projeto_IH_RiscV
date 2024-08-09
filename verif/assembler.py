@@ -253,6 +253,12 @@ INSTRUCTION = {
   "funct3": "111",
   "funct7": "0000000"
  },
+ "halt": {		# halt pseudo-instruction should assign PC to itself
+  "format": "H",
+  "opcode": "1111111",
+  "funct3": "",
+  "funct7": ""
+ },
 }
 
 
@@ -368,6 +374,9 @@ def translate_instruction(instruction):
 		opcode = INSTRUCTION[instr]["opcode"]
 		funct3 = INSTRUCTION[instr]["funct3"]
 		funct7 = INSTRUCTION[instr]["funct7"]
+
+		if (instr == "halt"):
+			return "1111111" + 25 * '0'
 
 		if (INSTRUCTION[instr]["format"] not in ["S", "B"]):
 			rd = instruction.split(" ")[1].split(",")[0]
