@@ -1,0 +1,25 @@
+addi x5,x0,0    -- teste escrita e lida de array de bytes
+addi x30,x0,69
+sb x30,0(x5)
+addi x5,x5,1
+sb x30,0(x5)
+addi x5,x5,1
+sb x30,0(x5)
+addi x5,x5,1
+sb x30,0(x5)
+addi x5,x5,1
+sb x30,0(x5)
+addi x5,x5,1
+sb x30,0(x5)
+addi x5,x0,0
+lb x30,0(x5)
+addi x5,x5,1
+lb x30,0(x5)
+addi x5,x5,1
+lb x30,0(x5)
+addi x5,x5,1
+lb x30,0(x5)
+addi x5,x5,1
+lb x30,0(x5)
+addi x5,x5,1
+lb x30,0(x5)

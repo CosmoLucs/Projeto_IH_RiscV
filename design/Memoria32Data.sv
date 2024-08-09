@@ -72,12 +72,12 @@ module Memoria32Data (
       .ramSize(65536),
       .ramWide(8)
   ) memBlock0 (
-      .clk(Clk),
-      .data(inS0),
-      .radd(addS0),
-      .wadd(waddS0),
-      .wren(Wr[0]),
-      .q(outS0)
+      .clk(Clk),        // clock
+      .data(inS0),      // input memory value
+      .radd(addS0),     // read address
+      .wadd(waddS0),    // write address
+      .wren(Wr[0]),     // will write flag
+      .q(outS0)         // output memory value
   );
   //1
   ramOnChipData #(

@@ -225,7 +225,8 @@ module Datapath #(
       BrImm,
       Old_PC_Four,
       BrPC,
-      PcSel
+      PcSel,
+      opcode  // sends opcode to branch unit so it can check for halt instruction
   );
 
   // EX_MEM_Reg C;

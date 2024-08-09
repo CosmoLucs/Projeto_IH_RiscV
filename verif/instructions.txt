@@ -1,6 +1,9 @@
-lw x4,1(x0)
-lw x6,0(x0)
-lw x7,1(x0)
-addi x4,x4,-1
-addi x7,x7,2
-bge x4,x4,-8
+addi x7,x0,6
+addi x8,x0,6
+addi x9,x0,6
+sb x7,64(x0)
+lb x7,64(x0)
+sh x8,72(x0)
+lh x8,72(x0)
+sw x9,80(x0)
+lw x9,80(x0)
